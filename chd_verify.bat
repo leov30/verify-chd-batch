@@ -56,7 +56,7 @@ chdman verify --input "%~1" >chdman.tmp
 >nul findstr /bl /c:"Raw SHA1 verification successful" chdman.tmp&& set "_verify[1]=ok"
 >nul findstr /bl /c:"Overall SHA1 verification successful" chdman.tmp&& set "_verify[2]=ok"
 
-(echo "","%~1","%_version%","!_sha1!","!_verify[0]!","!_verify[1]!","!_verify[2]!")>>output.csv
+(echo "","%~1","!_version!","!_sha1!","!_verify[0]!","!_verify[1]!","!_verify[2]!")>>output.csv
 
 exit /b
 
@@ -83,7 +83,7 @@ for /f "tokens=1,* delims== " %%g in ('^("%_7zip%" l -slt -spd -- "%~1"^)^|finds
 	>nul findstr /bl /c:"Raw SHA1 verification successful" chdman.tmp&& set "_verify[1]=ok"
 	>nul findstr /bl /c:"Overall SHA1 verification successful" chdman.tmp&& set "_verify[2]=ok"
 	
-	(echo "%~1","%%h","%_version%","!_sha1!","!_verify[0]!","!_verify[1]!","!_verify[2]!")>>output.csv
+	(echo "%~1","%%h","!_version!","!_sha1!","!_verify[0]!","!_verify[1]!","!_verify[2]!")>>output.csv
 	del "%%h"
 )
 
