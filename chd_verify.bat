@@ -70,7 +70,7 @@ for /f "tokens=1,* delims== " %%g in ('^("%_7zip%" l -slt -spd -- "%~1"^)^|finds
 	set "_verify[0]="&set "_verify[1]="&set "_verify[2]="
 	set "_sha1="&set "_version="
 	
-	for /f "tokens=1,2,3" %%i in ('chdman info -i "%%h"^|findstr /bl /c:"SHA1:"') do (
+	for /f "tokens=1,2,3" %%i in ('chdman info -i "%%h"^|findstr /bl /c:"SHA1:" /c:"File Version:"') do (
 		if "%%i"=="SHA1:" (
 			set "_sha1=%%j"
 			>nul findstr /li /c:"sha1=""%%j""" "%_dat%"&&set "_verify[0]=ok"
